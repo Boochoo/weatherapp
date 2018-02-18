@@ -1,0 +1,22 @@
+version: '3'
+
+services: 
+  backend: 
+    build: ./backend
+    ports: 
+      - 9000:9000
+    environment:
+      - APPID=77b9a0dbc76e192b56c24bd7e1c75efd
+      - TARGET_CITY=Helsinki,fi
+      - NPM_CONFIG_LOGLEVEL=warn
+
+  frontend:
+    build: ./frontend
+    ports:
+      - 8000:8000
+    environment:
+      # call localhost from client web
+      - ENDPOINT=http://localhost:9000/api
+      - NPM_CONFIG_LOGLEVEL=warn
+    depends_on:
+      - backend
