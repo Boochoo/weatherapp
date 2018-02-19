@@ -8,6 +8,10 @@ body {
   align-items: center;
 }
 
+#app {
+  background: goldenrod;
+  font-family: Courier, Monaco, monospace;
+}
 .icon {
   width: 5vw;
   height: 5vw;
@@ -22,6 +26,9 @@ body {
 
 .forecast__wrapper {
   display: flex;
+  background: darkgrey;
+  padding: 2em;
+  color: darkblue;
 }
 .forecast__container {
   margin-right: 2em;

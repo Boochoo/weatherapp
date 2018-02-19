@@ -1,5 +1,3 @@
-const debug = require('debug')('weathermap');
-
 const Koa = require('koa');
 const router = require('koa-router')();
 const fetch = require('node-fetch');
@@ -40,7 +38,6 @@ const initWeatherData = async () => {
 router.get('/api/weather', async ctx => {
   const weatherData = await initWeatherData();
 
-  console.log(weatherData);
   ctx.type = 'application/json; charset=utf-8';
   ctx.body = weatherData || {};
 });
@@ -49,6 +46,3 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 app.listen(port);
-
-console.log(`App listening on port ${port}`);
-console.log(`Using API key ${appId}`);

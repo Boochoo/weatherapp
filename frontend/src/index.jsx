@@ -32,7 +32,6 @@ class Weather extends React.Component {
 
   async componentWillMount() {
     const weather = await getWeatherFromApi();
-    console.log(weather);
 
     const forecastList = weather.forecasts.map(x => {
       return [x.dt_txt.slice(11, 16), x.main.temp_max, x.weather[0].icon];
@@ -51,9 +50,9 @@ class Weather extends React.Component {
     const forecastTime = forecastList.map(x => {
       return (
         <div className="forecast__container" key={x[0]}>
-          <p>{Math.round(x[1])}&deg;C</p>
-          <p>{x[0]}</p>
+          <p>{Math.round(x[1])}&deg;</p>
           <img alt={x.dt} src={`/img/${x[2].slice(0, -1)}.svg`} />
+          <p>{x[0]}</p>
         </div>
       );
     });
@@ -61,13 +60,12 @@ class Weather extends React.Component {
     return (
       <div>
         <div className="main__weather-wrapper">
+          <h1> {city}</h1>
           <div className="icon">
             {icon && <img alt={icon} src={`/img/${icon}.svg`} />}
           </div>
-          <h1>{temp}&deg;C</h1>
-          <p> {city}</p>
+          <h1>{temp}&deg;</h1>
         </div>
-
         <div className="forecast__wrapper">{forecastTime}</div>
       </div>
     );
