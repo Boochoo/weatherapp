@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
+import React from 'react';
 
-class WeatherData extends React.Component {
+class Location extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      weatherData: '',
-      currentLocation: '',
+      currentLocation: undefined,
     };
     this.getCurrentLocation = this.getCurrentLocation.bind(this);
 
@@ -24,6 +22,10 @@ class WeatherData extends React.Component {
 
     this.setState({ currentLocation: currPos });
   }
+
+  render() {
+    return <div>{this.state.currentLocation}</div>;
+  }
 }
 
-export default WeatherData;
+export default Location;

@@ -14,10 +14,22 @@ const app = new Koa();
 
 app.use(cors());
 
-const fetchWeather = async () => {
+const fetchWeather = async (lat, long) => {
   const endpoint = `${mapURI}/forecast?q=${targetCity}&appid=${appId}&units=metric&`;
-  const response = await fetch(endpoint);
-  return response ? response.json() : {};
+  const endpointWithLocation = `${mapURI}/forecast?q=${lat}&lon=${long}&appid=${appId}&units=metric&`;
+  let displayDefault = false;
+
+  if (lat === undefined && long === undefined) {
+    displayDefault = true;
+  }
+
+  if (displayDefault) {
+    const response = await fetch(endpoint);
+    return response.json() || {};
+  } else {
+    const response = await fetch(endpointWithLocation);
+    return response.json() || {};
+  }
 };
 
 const initWeatherData = async () => {

@@ -1,22 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const baseURL = process.env.ENDPOINT;
+// Api
+import getWeatherFromApi from './data/api';
 
-console.log({ baseURL });
-
-const getWeatherFromApi = async () => {
-  try {
-    const response = await fetch(`${baseURL}/weather`);
-    // console.log(response.json());
-
-    return response.json();
-  } catch (error) {
-    console.error(error); // remove consoles
-  }
-
-  return {};
-};
+// Components
+import ForecastList from './components/ForecastList';
 
 class Weather extends React.Component {
   constructor(props) {
@@ -26,37 +15,21 @@ class Weather extends React.Component {
       icon: '',
       city: '',
       temp: '',
-      forecastList: [],
     };
   }
 
   async componentWillMount() {
     const weather = await getWeatherFromApi();
 
-    const forecastList = weather.forecasts.map(x => {
-      return [x.dt_txt.slice(11, 16), x.main.temp_max, x.weather[0].icon];
-    });
-
     this.setState({
       icon: weather.weatherInfo.icon.slice(0, -1),
       city: weather.report.city,
       temp: weather.report.temp,
-      forecastList,
     });
   }
 
   render() {
-    const { icon, city, temp, forecastList } = this.state;
-    const forecastTime = forecastList.map(x => {
-      return (
-        <div className="forecast__container" key={x[0]}>
-          <p>{Math.round(x[1])}&deg;</p>
-          <img alt={x.dt} src={`/img/${x[2].slice(0, -1)}.svg`} />
-          <p>{x[0]}</p>
-        </div>
-      );
-    });
-
+    const { icon, city, temp } = this.state;
     return (
       <div>
         <div className="main__weather-wrapper">
@@ -66,7 +39,7 @@ class Weather extends React.Component {
           </div>
           <h1>{temp}&deg;</h1>
         </div>
-        <div className="forecast__wrapper">{forecastTime}</div>
+        <ForecastList />
       </div>
     );
   }
