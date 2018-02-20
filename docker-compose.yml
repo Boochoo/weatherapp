@@ -9,6 +9,8 @@ services:
       - APPID=77b9a0dbc76e192b56c24bd7e1c75efd
       - TARGET_CITY=Helsinki,fi
       - NPM_CONFIG_LOGLEVEL=warn
+    volumes:
+      - ./backend:/app
 
   frontend:
     build: ./frontend
@@ -20,3 +22,6 @@ services:
       - NPM_CONFIG_LOGLEVEL=warn
     depends_on:
       - backend
+    volumes:
+      - ./frontend:/src
+
