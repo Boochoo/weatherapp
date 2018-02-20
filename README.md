@@ -16,7 +16,7 @@ Luckily we now have [docker compose](https://docs.docker.com/compose/) saving us
 * [x] Make a copy of this repository in your own github account (do not fork unless you really want to be public).
 * [x] Create a personal repository in github.
 * [x] Make changes, commit them, and push them in your own repository.
-* [ ] Send us the url where to find the code.
+* [x] Send us the url where to find the code.
 
 ### Via tar-package
 
