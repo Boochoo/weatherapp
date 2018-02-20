@@ -38,13 +38,13 @@ There are a few things you must do to get the app up and running. After that the
 * [x] Add **Dockerfile**'s in the _frontend_ and the _backend_ directories to run them virtually on any environment having [docker](https://www.docker.com/) installed. It should work by saying e.g. `docker build -t weatherapp_backend . && docker run --rm -i -p 9000:9000 --name weatherapp_backend -t weatherapp_backend`. For frontend, `docker build -t weatherapp_frontend . && docker run --rm -i -p 8000:8000 --name weatherapp_frontend -t weatherapp_frontend`. If it doesn't, remember to check your api key first.
 
 * [x] Add a **docker-compose.yml** -file connecting the frontend and the backend, enabling running the app in a connected set of containers. Run `docker-compose up` to run the whole connected app.
-* [x] The app can be started by command `docker-compose up --build` and displayed in `localhost:8000`
+* [x] The app can be started by command `docker-compose up --build` and displayed in `localhost:8000`.
 
 ### Optional (do as many as you like)
 
 * [x] The application now only reports the current weather. It should probably report the forecast e.g. a few hours from now. (tip: [openweathermap api](https://openweathermap.org/forecast5))
 
-- [ ] The developers are still keen to run the app and its pipeline on their own computers. Share the development files for the container by using volumes, and make sure the containers are started with a command enabling hot reload.
+- [x] The developers are still keen to run the app and its pipeline on their own computers. Share the development files for the container by using volumes, and make sure the containers are started with a command enabling hot reload.
 
 - [x] There are [eslint](http://eslint.org/) errors. Sloppy coding it seems. Please help.
 
